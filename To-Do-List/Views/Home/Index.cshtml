@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-5">To do List</h1>
+    <div class="color-desc">
+        <div class="flex-display">
+            <div class="red ball"></div>
+            <p class="paragraph-desc">Cancelado</p>
+        </div>
+        <div class="flex-display">
+            <div class="yellow ball"></div>
+            <p class="paragraph-desc">A fazer</p>
+        </div>
+        <div class="flex-display">
+            <div class="green ball"></div>
+            <p class="paragraph-desc">Completo</p>
+        </div>
+    </div>
+    <a class="task-list">
+        <a class="btn btn-outline-success create-new-task ">
+            <i class="fa fa-plus"></i>
+        </a>
+        <div class="add-task js-add-task js-cancel">
+            <div class="title-div">
+                <input type="text" maxlength="64" class="non-bg"/>
+            </div>
+            <div>
+                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
+                <a class="btn btn-outline-danger cancel"><i class="fa fa-x"></i></a>
+            </div>
+        </div>
+        <div class="add-task">
+            <div class="title-div">
+                <p class="title-task">Comprar comida do dog</p>
+            </div>
+            <div>
+                <a asp-action="" asp-controller="" class="btn btn-outline-light text-white mr-1"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
+                <a class="btn btn-outline-danger"><i class="fa fa-x"></i></a>
+            </div>
+        </div>
+        <div class="add-task done">
+            <div class="title-div">
+                <p class="title-task">comprar comida do Cat</p>
+            </div>
+            <div>
+                <a asp-action="" asp-controller="" class="btn btn-outline-light text-white mr-1"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
+                <a class="btn btn-outline-danger"><i class="fa fa-x"></i></a>
+            </div>
+        </div>
+</div>
+        
+</div>
