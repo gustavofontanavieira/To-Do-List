@@ -18,8 +18,6 @@ namespace To_Do_List.Repository
 
         public TaskModel Create(TaskModel task)
         {
-            task.Status = "";
-            task.Task = "";
             _context.Task.Add(task);
             _context.SaveChanges();
             return task;
@@ -53,6 +51,16 @@ namespace To_Do_List.Repository
             _context.Task.Update(task);
             _context.SaveChanges();
             return task;
+        }
+
+        public TaskModel UpdateStatus(int id)
+        {
+            TaskModel taskModel = this.FindTask(id);
+            if (taskModel == null) throw new Exception("Erro ao atualizar tarefa");
+            taskModel.Status = "Completo";
+            _context.Task.Update(taskModel);
+            _context.SaveChanges();
+            return taskModel;
         }
     }
 }

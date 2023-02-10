@@ -1,10 +1,12 @@
-﻿@{
+﻿@model List<TaskModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-5">To do List</h1>
-    <div class="color-desc">
+    <h1 class="display-5 mt-4">Lista de afazeres</h1>
+    <div class="color-desc mt-4">
         <div class="flex-display">
             <div class="red ball"></div>
             <p class="paragraph-desc">Cancelado</p>
@@ -19,38 +21,44 @@
         </div>
     </div>
     <a class="task-list">
-        <a class="btn btn-outline-success create-new-task ">
+        <a class="btn btn-outline-success create-new-task text-light mt-2 mb-1" asp-controller="Home" asp-action="Create">
             <i class="fa fa-plus"></i>
         </a>
-        <div class="add-task js-add-task js-cancel">
-            <div class="title-div">
-                <input type="text" maxlength="64" class="non-bg"/>
-            </div>
-            <div>
-                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
-                <a class="btn btn-outline-danger cancel"><i class="fa fa-x"></i></a>
-            </div>
-        </div>
-        <div class="add-task">
-            <div class="title-div">
-                <p class="title-task">Comprar comida do dog</p>
-            </div>
-            <div>
-                <a asp-action="" asp-controller="" class="btn btn-outline-light text-white mr-1"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
-                <a class="btn btn-outline-danger"><i class="fa fa-x"></i></a>
-            </div>
-        </div>
-        <div class="add-task done">
-            <div class="title-div">
-                <p class="title-task">comprar comida do Cat</p>
-            </div>
-            <div>
-                <a asp-action="" asp-controller="" class="btn btn-outline-light text-white mr-1"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-outline-success mr-1"><i class="fa fa-check"></i></a>
-                <a class="btn btn-outline-danger"><i class="fa fa-x"></i></a>
-            </div>
-        </div>
-</div>
-        
+        @if (Model != null && Model.Any())
+        {
+            foreach (TaskModel task in Model)
+            {
+                if (task.Status == "Pendente")
+                {
+                    <div class="add-task">
+                        <div class="title-div">
+                            <p class="title-task">@task.Task</p>
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-light text-light mr-1"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-outline-success mr-1 text-light" asp-controller="Home" asp-action="UpdateStatus"  asp-route-id="@task.Id"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id"><i class="fa fa-x"></i></a>
+                        </div>
+                    </div>
+                }
+                else if (task.Status == "Completo")
+                {
+                    <div class="add-task done">
+                        <div class="title-div">
+                            <p class="title-task">@task.Task</p>
+                        </div>
+                        <div>
+                            <a class="btn btn-outline-light text-light mr-1"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-outline-success mr-1 text-light"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id"><i class="fa fa-x"></i></a>
+                        </div>
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <h3 class="text-center text-light mt-5">Você não possui nenhuma tarefa</h3>
+        }
+
 </div>

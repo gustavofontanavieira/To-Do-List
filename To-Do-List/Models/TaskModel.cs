@@ -8,6 +8,7 @@ namespace To_Do_List.Models
     public class TaskModel
     {
         public int Id { get; set; }
+
         public string Task { get; set; }
         public string Status { get; set; }
     }

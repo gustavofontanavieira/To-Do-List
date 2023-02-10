@@ -140,6 +140,7 @@ body {
     background-color: #00FF7F;
 }
 
+
 .create-new-task {
     width: 45px;
     height: 45px;
@@ -167,6 +168,11 @@ body {
 
 .js-add-task {
     display: none;
+}
+
+.btn-align{
+   text-align: center;
+   margin-top: 2rem;
 }
 
 @media (max-width: 550px) {

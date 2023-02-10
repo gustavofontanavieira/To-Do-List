@@ -13,5 +13,6 @@ namespace To_Do_List.Repository
         Boolean Delete(int id);
         TaskModel Update(TaskModel task);
         TaskModel FindTask(int id);
+        TaskModel UpdateStatus(int id);
     }
 }

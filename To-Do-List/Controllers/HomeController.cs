@@ -24,11 +24,48 @@ namespace To_Do_List.Controllers
             return View(tasks);
         }
 
-        [HttpPost]
-        public IActionResult Create(TaskModel task)
+        public IActionResult Create()
         {
-            _taskRepository.Create(task);
-            return View("Index");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateTask(TaskModel newTask)
+        {
+            try
+            {
+                if (newTask.Task != null && ModelState.IsValid)
+                {
+                    _taskRepository.Create(newTask);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            catch(System.Exception erro)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        public IActionResult UpdateStatus(int id)
+        {
+            _taskRepository.UpdateStatus(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdateTask(TaskModel updatedTask)
+        {
+            _taskRepository.Update(updatedTask);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _taskRepository.Delete(id);
+            return RedirectToAction("Index");
         }
 
 
