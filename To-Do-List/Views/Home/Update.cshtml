@@ -1,0 +1,42 @@
+﻿@model TaskModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h3 class="text-center mt-4">Atualize sua tarefa</h3>
+<div class="mt-5">
+    <form asp-action="UpdateTask" method="post" asp-controller="Home">
+        @if (Model.Status == "Pendente")
+        {
+        <div class="add-task js-cancel">
+            <div class="title-div">
+                <input type="hidden" value="@Model.Id" asp-for="Id" />
+                <input type="text" maxlength="64" class="non-bg" value="@Model.Task" asp-for="Task" id="exampleInputTask" />
+            </div>
+            <div>
+                <a class="btn btn-outline-danger cancel text-light" asp-controller="Home" asp-action="Index"><i class="fa fa-x"></i></a>
+            </div>
+        </div>
+            <input type="text" class="window-remove" value="@Model.Status" asp-for="Status" />
+            <div class="btn-align">
+                <button type="submit" role="button" class="btn btn-outline-info text-light btn-align">Confirmar</button>
+            </div>
+        }
+        else
+        {
+            <div class="add-task done js-cancel">
+                <div class="title-div">
+                    <input type="hidden" value="@Model.Id" asp-for="Id" />
+                    <input type="text" maxlength="64" class="non-bg" value="@Model.Task" asp-for="Task" id="exampleInputTask" />
+                </div>
+                <div>
+                    <a class="btn btn-outline-danger cancel text-light" asp-controller="Home" asp-action="Index"><i class="fa fa-x"></i></a>
+                </div>
+            </div>
+            <input type="text" class="window-remove" value="@Model.Status" asp-for="Status" />
+            <div class="btn-align">
+                <button type="submit" role="button" class="btn btn-outline-info text-light btn-align">Confirmar</button>
+            </div>
+        }
+    </form>
+</div>

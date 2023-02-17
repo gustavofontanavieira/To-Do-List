@@ -1,6 +1,6 @@
 ﻿@model TaskModel
 @{
-    ViewData["Title"] = "Criar Taks";
+    ViewData["Title"] = "Create Taks";
 }
 
 <h3 class="text-center mt-4">Digite o título da sua tarefa</h3>
@@ -14,7 +14,7 @@
                 <a class="btn btn-outline-danger cancel text-light" asp-controller="Home" asp-action="Index"><i class="fa fa-x"></i></a>
             </div>
         </div>
-        <input type="text" class="js-add-task" value="Pendente" asp-for="Status" />
+        <input type="text" class="window-remove" value="Pendente" asp-for="Status" />
         <div class="btn-align">
             <button type="submit" role="button" class="btn btn-outline-info text-light btn-align">Confirmar</button>
         </div>

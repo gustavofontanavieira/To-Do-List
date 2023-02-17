@@ -48,7 +48,7 @@ namespace To_Do_List.Repository
             if(taskModel == null) throw new Exception("Erro ao atualizar tarefa");
             taskModel.Task = task.Task;
             taskModel.Status = task.Status;
-            _context.Task.Update(task);
+            _context.Task.Update(taskModel);
             _context.SaveChanges();
             return task;
         }
@@ -58,6 +58,16 @@ namespace To_Do_List.Repository
             TaskModel taskModel = this.FindTask(id);
             if (taskModel == null) throw new Exception("Erro ao atualizar tarefa");
             taskModel.Status = "Completo";
+            _context.Task.Update(taskModel);
+            _context.SaveChanges();
+            return taskModel;
+        }
+
+        public TaskModel PendingStatus(int id)
+        {
+            TaskModel taskModel = this.FindTask(id);
+            if (taskModel == null) throw new Exception("Erro ao atualizar tarefa");
+            taskModel.Status = "Pendente";
             _context.Task.Update(taskModel);
             _context.SaveChanges();
             return taskModel;

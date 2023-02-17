@@ -14,5 +14,6 @@ namespace To_Do_List.Repository
         TaskModel Update(TaskModel task);
         TaskModel FindTask(int id);
         TaskModel UpdateStatus(int id);
+        TaskModel PendingStatus(int id);
     }
 }

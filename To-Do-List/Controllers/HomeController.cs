@@ -56,9 +56,21 @@ namespace To_Do_List.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult Update(int id)
+        {
+            var task = _taskRepository.FindTask(id);
+            return View(task);
+        }
         public IActionResult UpdateTask(TaskModel updatedTask)
         {
             _taskRepository.Update(updatedTask);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult PendingStatus(int id)
+        {
+            _taskRepository.PendingStatus(id);
             return RedirectToAction("Index");
         }
 

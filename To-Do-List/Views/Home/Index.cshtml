@@ -8,10 +8,6 @@
     <h1 class="display-5 mt-4">Lista de afazeres</h1>
     <div class="color-desc mt-4">
         <div class="flex-display">
-            <div class="red ball"></div>
-            <p class="paragraph-desc">Cancelado</p>
-        </div>
-        <div class="flex-display">
             <div class="yellow ball"></div>
             <p class="paragraph-desc">A fazer</p>
         </div>
@@ -30,27 +26,47 @@
             {
                 if (task.Status == "Pendente")
                 {
+                    <div class="window window-remove">
+                        <div>
+                            <h5 class="window-title">Deseja mesmo excluir a task:</h5>
+                            <p>"@task.Task"?</p>
+                        </div>
+                        <div class="window-buttons">
+                            <a class="btn btn-outline-success text-light">Cancelar</a>
+                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id">Confirmar</a>
+                        </div>
+                    </div>
                     <div class="add-task">
                         <div class="title-div">
                             <p class="title-task">@task.Task</p>
                         </div>
                         <div>
-                            <a class="btn btn-outline-light text-light mr-1"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-outline-success mr-1 text-light" asp-controller="Home" asp-action="UpdateStatus"  asp-route-id="@task.Id"><i class="fa fa-check"></i></a>
-                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id"><i class="fa fa-x"></i></a>
+                            <a class="btn btn-outline-light text-light mr-1" asp-controller="Home" asp-action="Update" asp-route-id="@task.Id"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-outline-success mr-1 text-light" asp-controller="Home" asp-action="UpdateStatus" asp-route-id="@task.Id"><i class="fa fa-check"></i></a>
+                            <a class="btn btn-outline-danger text-light window-open"><i class="fa fa-x"></i></a>
                         </div>
                     </div>
                 }
                 else if (task.Status == "Completo")
                 {
+                    <div class="window window-remove">
+                        <div>
+                            <h5 class="window-title">Deseja mesmo excluir a task:</h5>
+                            <p>"@task.Task"?</p>
+                        </div>
+                        <div class="window-buttons">
+                            <a class="btn btn-outline-success text-light">Cancelar</a>
+                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id">Confirmar</a>
+                        </div>
+                    </div>
                     <div class="add-task done">
                         <div class="title-div">
                             <p class="title-task">@task.Task</p>
                         </div>
                         <div>
-                            <a class="btn btn-outline-light text-light mr-1"><i class="fa fa-edit"></i></a>
-                            <a class="btn btn-outline-success mr-1 text-light"><i class="fa fa-check"></i></a>
-                            <a class="btn btn-outline-danger text-light" asp-controller="Home" asp-action="Delete" asp-route-id="@task.Id"><i class="fa fa-x"></i></a>
+                            <a class="btn btn-outline-light text-light mr-1" asp-controller="Home" asp-action="Update" asp-route-id="@task.Id"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-outline-warning mr-1 text-light" asp-controller="Home" asp-action="PendingStatus" asp-route-id="@task.Id"><i class="fa-solid fa-arrow-left"></i></a>
+                            <a class="btn btn-outline-danger text-light window-open"><i class="fa fa-x"></i></a>
                         </div>
                     </div>
                 }
