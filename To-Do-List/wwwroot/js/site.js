@@ -1,18 +1,18 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿const windowOpen = document.querySelectorAll(".window-open");
+const windowRemove = document.querySelectorAll(".window-remove");
+const windowClose = document.querySelectorAll(".window")
+const body = document.querySelector("body");
 
-// Write your JavaScript code.
-const windowOpen = document.querySelectorAll(".window-open");
-
-windowOpen.forEach(item => {
+windowOpen.forEach((item, index) => {
     item.addEventListener('click', function () {
-        document.querySelector("body").classList.add("background-black")
-        document.querySelector(".window").classList.remove("window-remove");
+        windowRemove[index].classList.remove("window-remove")
+        body.classList.add("background-black");
     })
 })
 
-
-document.querySelector(".window").addEventListener('click', function () {
-    document.querySelector(".window").classList.add("window-remove");
-    document.querySelector("body").classList.remove("background-black")
+windowClose.forEach(item => {
+    item.addEventListener('click', function () {
+        item.classList.add("window-remove");
+        body.classList.remove("background-black")
+    })
 })
